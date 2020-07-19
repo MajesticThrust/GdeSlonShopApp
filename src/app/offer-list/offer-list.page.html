@@ -3,10 +3,31 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>offer-list</ion-title>
+    <ion-title>Каталог</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card
+    *ngFor="let offer of offers$ | async; trackBy: offerTrackBy"
+    (click)="onOfferClick(offer)"
+  >
+    <img *ngIf="offer.thumbnail != null" [src]="offer.thumbnail" />
+    <ion-card-header>
+      <!-- TODO shop name -->
+      <!-- <ion-card-subtitle></ion-card-subtitle> -->
+      <ion-card-title>{{ offer.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button>{{offer.price}} {{offer.currency}}</ion-button>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="onInfScroll($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Загрузка..."
+    >
+    </ion-infinite-scroll-content
+  ></ion-infinite-scroll>
 </ion-content>

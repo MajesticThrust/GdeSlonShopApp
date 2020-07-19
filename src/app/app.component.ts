@@ -21,6 +21,11 @@ export class AppComponent implements OnInit {
       url: "/account",
       icon: "person-circle",
     },
+    {
+      title: "Каталог",
+      url: "/offer-list",
+      icon: "cube",
+    }
   ];
   // public labels = ["Family", "Friends", "Notes", "Work", "Travel", "Reminders"];
 

@@ -1,0 +1,13 @@
+.carousel {
+  height: 20vh;
+  
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+  overflow-x: scroll;
+  
+  .image {
+    height: 100%;
+  }
+}
