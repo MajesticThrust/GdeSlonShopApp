@@ -3,17 +3,21 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ng-component *ngIf="loggedIn$ | async; else loggedOut">
-            <ng-component *ngIf="user$ | async as user">
-              <ion-list-header>{{ user.name }}</ion-list-header>
-              <ion-note>Приятного шопинга!</ion-note>
-            </ng-component>
-          </ng-component>
+          <ion-list-header>
+            <span *ngIf="user$ | async as user; else noUser">{{
+              user.name
+            }}</span>
+            <ng-template #noUser>
+              <span>Пользователь</span>
+            </ng-template>
+          </ion-list-header>
 
-          <ng-template #loggedOut>
-            <ion-list-header>Пользователь</ion-list-header>
-            <ion-note>Вход не выполнен</ion-note>
-          </ng-template>
+          <ion-note>
+            <span *ngIf="loggedIn$ | async; else loggedOut"
+              >Приятного шопинга!</span
+            >
+            <ng-template #loggedOut>Вход не выполнен</ng-template>
+          </ion-note>
 
           <ion-menu-toggle
             auto-hide="false"
