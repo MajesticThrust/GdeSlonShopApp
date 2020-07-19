@@ -1,0 +1,7 @@
+{
+  "name": "GdeSlonShopApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
